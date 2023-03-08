@@ -1,3 +1,17 @@
-# linux
-# linux
-# linux
+# Setting linux on a fresh VM or PC
+
+
+```
+sudo apt update
+sudo apt install vim git samba
+git config --global user.email brettbeeson@fastmail.com
+git config --global user.name "Brett Beeson"
+
+git pull git@github.com:brettbeeson/linux.git
+cp ~/linux/bashrc ~/.bashrc
+#
+
+# copy to ~/share ssh (via smb)
+mv ~/share/ssh/* ~/.ssh
+
+```

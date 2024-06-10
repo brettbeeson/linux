@@ -8,24 +8,45 @@ sudo apt install vim git samba direnv
 git config --global user.email brettbeeson@fastmail.com
 git config --global user.name "Brett Beeson"
 
-git pull git@github.com:brettbeeson/linux.git
-cp ~/linux/bashrc ~/.bashrc 
-
+#
 # samba
+#
 cd ~
 mkdir share/
-
-[sambashare]
+vim /etc/conf/samba.comf
+# add this << EOS
+[share]
     comment = Samba on Ubuntu
-    path = /home/bbeeson/sambashare
+    path = /home/bbeeson/share
     read only = no
     browsable = yes
+# EOS
+sudo systemctl restart smbd
+# Now accessible from Windows via smb:\\hostname.local\share
 
-# copy to ~/share ssh (via smb)
+#
+# ssh
+#
+# on windows copy to ssh/ to ~/share/
+# then install on linux
 mv ~/share/ssh/* ~/.ssh
 
-# phisaver
-git clone git@github.com:brettbeeson/phisaver.git
-cp ~/share/env ~/phisaver/.env
-cp ~/share/envrc ~/phisaver/.envrc
+#
+# Now you can get this repo
+#
+git linux git@github.com:brettbeeson/linux.git
+cd linux
+
+#
+# do rest of setup
+#
+./install.sh
+
+
+
+#
+# bash
+#
+
+
 ```

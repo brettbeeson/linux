@@ -3,13 +3,16 @@
 
 ```
 sudo apt update
+sudo apt upgrade
 sudo apt install vim git samba direnv
 git config --global user.email brettbeeson@fastmail.com
 git config --global user.name "Brett Beeson"
 
 git pull git@github.com:brettbeeson/linux.git
 cp ~/linux/bashrc ~/.bashrc 
-#
+
+# samba
+
 
 # copy to ~/share ssh (via smb)
 mv ~/share/ssh/* ~/.ssh

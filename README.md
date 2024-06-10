@@ -12,7 +12,14 @@ git pull git@github.com:brettbeeson/linux.git
 cp ~/linux/bashrc ~/.bashrc 
 
 # samba
+cd ~
+mkdir share/
 
+[sambashare]
+    comment = Samba on Ubuntu
+    path = /home/bbeeson/sambashare
+    read only = no
+    browsable = yes
 
 # copy to ~/share ssh (via smb)
 mv ~/share/ssh/* ~/.ssh

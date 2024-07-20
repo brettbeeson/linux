@@ -45,6 +45,12 @@ cd linux
 #
 # bash
 #
+cat bashrc-extras >> ~/.bashrc
+source ~/.bashrc
 
+#
+# vscode
+#
+See vscode.md
 
 ```

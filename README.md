@@ -4,7 +4,7 @@
 ```
 sudo apt update
 sudo apt upgrade
-sudo apt install vim git samba direnv
+sudo apt install -Y vim git samba direnv
 git config --global user.email brettbeeson@fastmail.com
 git config --global user.name "Brett Beeson"
 
@@ -34,15 +34,13 @@ mv ~/share/ssh/* ~/.ssh
 #
 # Now you can get this repo
 #
-git linux git@github.com:brettbeeson/linux.git
+git clone git@github.com:brettbeeson/linux.git
 cd linux
 
 #
 # do rest of setup
 #
-./install.sh
-
-
+./setup.sh
 
 #
 # bash

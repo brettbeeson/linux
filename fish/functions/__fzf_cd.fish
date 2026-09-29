@@ -5,14 +5,30 @@ function __fzf_cd
 
     if type -q fd
         set selected (
-            fd --type d --hidden --follow --exclude .git . |
-            fzf --height=60% --reverse --border --prompt='cd> '
+            fd \
+                --type d \
+                --hidden \
+                --follow \
+                --exclude .git \
+                . |
+            fzf \
+                --height=60% \
+                --reverse \
+                --border \
+                --prompt='cd> '
         )
     else
         set selected (
-            find . -path '*/.git' -prune -o -type d -print 2>/dev/null |
+            find . \
+                -path '*/.git' -prune \
+                -o -type d -print \
+                2>/dev/null |
             string replace -r '^\./' '' |
-            fzf --height=60% --reverse --border --prompt='cd> '
+            fzf \
+                --height=60% \
+                --reverse \
+                --border \
+                --prompt='cd> '
         )
     end
 

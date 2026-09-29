@@ -1,3 +1,4 @@
 function sc --description 'systemctl shortcut'
-    systemctl $argv
+    sudo systemctl $argv 
 end
+~         

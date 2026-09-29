@@ -5,14 +5,29 @@ function __fzf_file
 
     if type -q fd
         set selected (
-            fd --hidden --follow --exclude .git . |
-            fzf --height=60% --reverse --border --prompt='file> '
+            fd \
+                --hidden \
+                --follow \
+                --exclude .git \
+                . |
+            fzf \
+                --height=60% \
+                --reverse \
+                --border \
+                --prompt='file> '
         )
     else
         set selected (
-            find . -path '*/.git' -prune -o -type f -print 2>/dev/null |
+            find . \
+                -path '*/.git' -prune \
+                -o -type f -print \
+                2>/dev/null |
             string replace -r '^\./' '' |
-            fzf --height=60% --reverse --border --prompt='file> '
+            fzf \
+                --height=60% \
+                --reverse \
+                --border \
+                --prompt='file> '
         )
     end
 

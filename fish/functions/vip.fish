@@ -4,5 +4,5 @@ function vip --description 'Look up a PhiSaver VPN host IP'
         return 2
     end
 
-    curl -fsS "https://live.phisaver.com/vpn/ip/$argv[1]"
+    ssh live.phisaver.com vip $argv[1]
 end

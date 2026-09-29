@@ -6,7 +6,5 @@ function fish_prompt
         test -n "$machine"; or set machine '?'
     end
 
-    set -l pwd_display (__short_pwd)
-
-    printf '(%s) %s> ' "$machine" "$pwd_display"
+    printf '(%s) %s> ' "$machine" (__short_pwd)
 end

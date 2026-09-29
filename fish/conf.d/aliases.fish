@@ -1,5 +1,3 @@
-# Common interactive abbreviations / aliases.
-
 # Directory shortcuts.
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -10,8 +8,10 @@ alias ll='ls -lah'
 
 # systemd.
 alias sc='sudo systemctl'
+alias jc='journalctl -f -n 50 -u'
 
-# Editors: allow local.fish to override these.
+# Default editor.
+# local.fish may set EDITOR before this file is sourced.
 if not set -q EDITOR
     if type -q nvim
         set -gx EDITOR nvim

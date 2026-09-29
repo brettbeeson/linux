@@ -1,3 +1,9 @@
-# One SSH target per line
-# nbm01
+# SSH targets, one per line.
+app-staging.phisaver.com
+app.phisaver.com
+#
+# Examples:
+# nbm02
 # ubuntu@staging
+#
+# Comments and blank lines are ignored.

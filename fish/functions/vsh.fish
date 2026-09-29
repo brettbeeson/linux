@@ -8,7 +8,8 @@ function vsh --description 'SSH to a PhiSaver VPN host as pi'
     set -e argv[1]
 
     set -l ip (vip "$host"); or return
-    test -n "$ip"; or begin
+
+    if test -z "$ip"
         echo "No VPN IP returned for $host" >&2
         return 1
     end

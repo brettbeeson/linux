@@ -1,6 +1,6 @@
-# Linux shell setup
+# Linux configuration
 
-Small, public shell-configuration repo for Linux machines.
+Small, public shell and server-configuration repo for Linux machines.
 
 Repository:
 
@@ -14,7 +14,7 @@ Expected location on every machine:
 ~/linux
 ```
 
-## What this config provides
+## What this repo provides
 
 - Fish shell
 - Prompt based on `~/.machine`
@@ -31,6 +31,11 @@ Expected location on every machine:
 - No SSH-agent configuration
 - No Git aliases
 - No automatic directory listing after `cd`
+- Optional Nginx server configuration in [`nginx/`](nginx/README.md)
+- Optional SSH server drop-ins in [`sshd/`](sshd/README.md)
+
+The shell installer does not apply server configuration. Select and validate
+the Nginx and SSH files on each host before installing them.
 
 ---
 

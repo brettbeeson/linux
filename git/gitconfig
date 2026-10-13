@@ -1,0 +1,9 @@
+# Shared git settings for all machines; included from ~/.gitconfig by install.sh.
+# llm: Public repo: no tokens or credentials here.
+[user]
+    name = Brett Beeson
+    email = brettbeeson@fastmail.com
+[init]
+    defaultBranch = main
+[pull]
+    ff = only

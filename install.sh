@@ -80,6 +80,15 @@ ensure_interactive_fish_login() {
     fi
 }
 
+ensure_git_include() {
+    # llm: Include the shared git config so ~/.gitconfig stays a normal file
+    # (VS Code, gh and credential helpers write machine-specific settings there).
+    local include="$LINUX_DIR/git/gitconfig"
+    command -v git >/dev/null 2>&1 || return 0
+    git config --global --get-all include.path 2>/dev/null | grep -Fqx "$include" \
+        || git config --global --add include.path "$include"
+}
+
 install_packages
 
 mkdir -p "$HOME/.config/fish/functions"
@@ -112,6 +121,7 @@ for file in "$LINUX_DIR"/fish/completions/*.fish; do
 done
 
 ensure_interactive_fish_login
+ensure_git_include
 
 if [[ ! -e "$HOME/.machine" ]]; then
     hostname -s > "$HOME/.machine"
@@ -138,3 +148,4 @@ echo "Machine label: $(cat "$HOME/.machine")"
 echo "Start Fish: fish"
 echo
 echo "Interactive Bash logins now start Fish; non-interactive SSH commands keep Bash."
+echo "Git: ~/.gitconfig includes $LINUX_DIR/git/gitconfig"

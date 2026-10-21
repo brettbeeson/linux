@@ -1,6 +1,6 @@
 default:
     just --list
     
-run args:
+run *args:
     test -z "$(git status --porcelain)" 
-    *args
+    {{ args }}

@@ -3,4 +3,4 @@ default:
     
 update server:
     test -z "$(git status --porcelain)" 
-    remote-sync.sh {{ server }}
+    ./update-remote.sh {{ server }}

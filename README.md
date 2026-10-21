@@ -33,10 +33,10 @@ Expected location on every machine:
 - No Git aliases
 - No automatic directory listing after `cd`
 - Optional Nginx server configuration in [`nginx/`](nginx/README.md)
-- Optional SSH server drop-ins in [`sshd/`](sshd/README.md)
+- SSH server hardening lives in the phisaver repo (`deploy/sshd`)
 
 The shell installer does not apply server configuration. Select and validate
-the Nginx and SSH files on each host before installing them.
+the Nginx files on each host before installing them.
 
 ---
 

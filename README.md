@@ -29,6 +29,7 @@ Expected location on every machine:
 - `just` Fish shell completions
 - Multi-machine remote bootstrap/update script
 - No SSH-agent configuration
+- Shared Git identity and defaults (`git/gitconfig`, included from `~/.gitconfig`)
 - No Git aliases
 - No automatic directory listing after `cd`
 - Optional Nginx server configuration in [`nginx/`](nginx/README.md)
@@ -548,6 +549,19 @@ The main links are:
 
 Existing non-symlink files are backed up before replacement.
 
+Git settings are not symlinked. The installer adds an include to
+`~/.gitconfig`, which stays a normal per-machine file:
+
+```ini
+[include]
+    path = ~/linux/git/gitconfig
+```
+
+`git/gitconfig` sets `user.name`, `user.email`, `init.defaultBranch = main` and
+`pull.ff = only`. Settings written directly in a machine's `~/.gitconfig`
+(VS Code, `gh`, credential helpers) are kept and override the shared file.
+Check with `git config user.email` (not `--global`, which ignores includes).
+
 ---
 
 # Supported package managers
@@ -579,6 +593,8 @@ linux/
 ├── README.md
 ├── bash/
 │   └── interactive-fish-login.bash
+├── git/
+│   └── gitconfig
 ├── install.sh
 ├── remote-sync.sh
 ├── hosts.txt

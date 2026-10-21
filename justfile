@@ -1,6 +1,6 @@
 default:
     just --list
     
-run *args:
+update server:
     test -z "$(git status --porcelain)" 
-    {{ args }}
+    remote-sync.sh {{ server }}

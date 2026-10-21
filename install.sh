@@ -15,6 +15,16 @@ install_packages() {
     command -v fzf >/dev/null 2>&1 || missing+=(fzf)
     command -v direnv >/dev/null 2>&1 || missing+=(direnv)
     command -v just >/dev/null 2>&1 || missing+=(just)
+    command -v podman >/dev/null 2>&1 || missing+=(podman)
+
+    if ! command -v uv >/dev/null 2>&1; then
+        if command -v snap >/dev/null 2>&1; then
+            echo "Installing: astral-uv (snap)"
+            sudo snap install astral-uv --classic
+        else
+            echo "snap not found; install uv manually: https://docs.astral.sh/uv/" >&2
+        fi
+    fi
 
     if ((${#missing[@]} == 0)); then
         return
@@ -80,7 +90,27 @@ ensure_interactive_fish_login() {
     fi
 }
 
+# llm: set global git identity (only if unset, so existing config is never clobbered).
+# Override per run with GIT_USER_NAME / GIT_USER_EMAIL.
+ensure_git_identity() {
+    local name="${GIT_USER_NAME:-Brett Beeson}"
+    local email="${GIT_USER_EMAIL:-brettbeeson@fastmail.com}"
+
+    command -v git >/dev/null 2>&1 || return 0
+
+    if [[ -z "$(git config --global user.name || true)" ]]; then
+        git config --global user.name "$name"
+        echo "Set git user.name: $name"
+    fi
+    if [[ -z "$(git config --global user.email || true)" ]]; then
+        git config --global user.email "$email"
+        echo "Set git user.email: $email"
+    fi
+}
+
 install_packages
+
+ensure_git_identity
 
 mkdir -p "$HOME/.config/fish/functions"
 mkdir -p "$HOME/.config/fish/completions"
